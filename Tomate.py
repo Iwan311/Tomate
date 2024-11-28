@@ -234,3 +234,115 @@ def quiz():
 
 if __name__ == "__main__":
     quiz()
+import random
+
+def stein_schere_papier():
+    print("Willkommen bei Stein-Schere-Papier!")
+    optionen = ["Stein", "Schere", "Papier"]
+
+    while True:
+        spieler_wahl = input("Wähle Stein, Schere oder Papier (oder 'Beenden' zum Aussteigen): ").capitalize()
+        if spieler_wahl == "Beenden":
+            print("Danke fürs Spielen!")
+            break
+        if spieler_wahl not in optionen:
+            print("Ungültige Wahl. Versuch es nochmal!")
+            continue
+
+        computer_wahl = random.choice(optionen)
+        print(f"Computer wählt: {computer_wahl}")
+
+        if spieler_wahl == computer_wahl:
+            print("Unentschieden!")
+        elif (spieler_wahl == "Stein" and computer_wahl == "Schere") or \
+             (spieler_wahl == "Schere" and computer_wahl == "Papier") or \
+             (spieler_wahl == "Papier" and computer_wahl == "Stein"):
+            print("Du gewinnst!")
+        else:
+            print("Computer gewinnt!")
+
+if __name__ == "__main__":
+    stein_schere_papier()
+def einheiten_umrechner():
+    print("Willkommen beim Einheiten-Umrechner!")
+    print("1. Kilometer zu Meilen")
+    print("2. Celsius zu Fahrenheit")
+    print("3. Kilogramm zu Pfund")
+
+    wahl = input("Wähle eine Option (1/2/3): ")
+
+    if wahl == "1":
+        km = float(input("Gib die Anzahl der Kilometer ein: "))
+        meilen = km * 0.621371
+        print(f"{km} Kilometer sind {meilen:.2f} Meilen.")
+    elif wahl == "2":
+        celsius = float(input("Gib die Temperatur in Celsius ein: "))
+        fahrenheit = (celsius * 9/5) + 32
+        print(f"{celsius}°C sind {fahrenheit:.2f}°F.")
+    elif wahl == "3":
+        kg = float(input("Gib das Gewicht in Kilogramm ein: "))
+        pfund = kg * 2.20462
+        print(f"{kg} Kilogramm sind {pfund:.2f} Pfund.")
+    else:
+        print("Ungültige Auswahl. Bitte starte das Programm erneut.")
+
+if __name__ == "__main__":
+    einheiten_umrechner()
+def ist_primzahl(zahl):
+    if zahl <= 1:
+        return False
+    for i in range(2, int(zahl ** 0.5) + 1):
+        if zahl % i == 0:
+            return False
+    return True
+
+def prime_checker():
+    zahl = int(input("Gib eine Zahl ein: "))
+    if ist_primzahl(zahl):
+        print(f"{zahl} ist eine Primzahl.")
+    else:
+        print(f"{zahl} ist keine Primzahl.")
+
+if __name__ == "__main__":
+    prime_checker()
+def bmi_rechner():
+    print("Willkommen beim BMI-Rechner!")
+    gewicht = float(input("Gib dein Gewicht in Kilogramm ein: "))
+    größe = float(input("Gib deine Größe in Metern ein: "))
+
+    bmi = gewicht / (größe ** 2)
+    print(f"Dein BMI ist: {bmi:.2f}")
+
+    if bmi < 18.5:
+        print("Untergewicht")
+    elif 18.5 <= bmi < 24.9:
+        print("Normalgewicht")
+    elif 25 <= bmi < 29.9:
+        print("Übergewicht")
+    else:
+        print("Adipositas")
+
+if __name__ == "__main__":
+    bmi_rechner()
+def reisekosten_rechner():
+    print("Willkommen beim Reisekostenrechner!")
+    entfernung = float(input("Gib die Entfernung in Kilometern ein: "))
+    verbrauch = float(input("Gib den Verbrauch deines Autos (Liter pro 100 km) ein: "))
+    spritpreis = float(input("Gib den aktuellen Spritpreis pro Liter ein: "))
+
+    kosten = (entfernung / 100) * verbrauch * spritpreis
+    print(f"Die Gesamtkosten für die Reise betragen: {kosten:.2f} Euro.")
+
+if __name__ == "__main__":
+    reisekosten_rechner()
+def fibonacci(bis):
+    a, b = 0, 1
+    print("Fibonacci-Folge:")
+    while a <= bis:
+        print(a, end=" ")
+        a, b = b, a + b
+    print()
+
+if __name__ == "__main__":
+    grenze = int(input("Gib die maximale Zahl für die Fibonacci-Folge ein: "))
+    fibonacci(grenze)
